@@ -1,37 +1,35 @@
 from app import app 
+from flask import url_for
 
+# home route
 @app.route('/')
 def index():
-  return "Hello Flask"
+  return "index"
 
-@app.route('/user/<username>')
-def show_user_profile(username):
-  '''
-  Docstring for show_user_profile
-  
-  :param username: Description
-  '''
-  return f'User {username}'
-
-
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-  '''
-  show the post with given ID, the IS is an interger 
-  '''
-  return f'Post {post_id}'
-
-
-# dynamic routes
-@app.route('/login', method=['GET', 'POST'])
-
+# login route
+@app.route('/login')
 def login():
-  if request.method == 'POST':
-    return do_the_login()
-  else:
-    return show_the_login_form()
+  return "login"
+
+# user's route
+@app.route('/users/<username>')
+def profile(username):
+  return f'{username}\'s profile'
+
+with app.test_request_context():
+  print(url_for('index'))
+  print(url_for('login'))
+  print(url_for('login', next='/'))
+  print(url_for('profile', username="John Doe"))
+
+# error handling
+@app.errorhandler(404)
+def page_not_found(error):
+  return "This page does not exist.", 404
+
+@app.errorhandler(500)
+def internal_server_error(error):
+  return "Internal server error.", 500
 
 
-# constructing URLs
-from flask import url_for
 
