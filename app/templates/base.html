@@ -1,0 +1,24 @@
+<!-- base template -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+  {% block body %}
+  {% endblock %}
+</body>
+
+</html>
+
+<!-- home.html  -->
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block body %}
+<h1>Welcome to the Home page</h1>
+<p>Hello, {{ name }}!</p>
+{% endblock %}

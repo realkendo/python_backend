@@ -4,17 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <img src="{{ url_for('static', filename='img/logo.png')}}" alt="Company Logo"> -->
   <title>{{ title }}</title>
 </head>
 
 <body>
   <h1>Hello {{ name }}!</h1>
   {% if messages %}
-  <ul>
+  <ol>
     {% for message in messages %}
     <li>{{ message }}</li>
     {% endfor %}
-  </ul>
+  </ol>
 
   {% else %}
   <p>No Messages.</p>
