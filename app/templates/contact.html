@@ -1,4 +1,4 @@
-<form action="method=" post" {{ url_for('handle_form') }}">
+<!-- <form action="method=" post" {{ url_for('handle_form') }}">
   <label for="name">Name:</label>
   <input type="text" name="name" id="name"><br>
   <br>
@@ -6,4 +6,10 @@
   <input type="text" name="email" id="email"><br>
   <br>
   <input type="submit" value="Submit">
+</form> -->
+
+<form action="{{ url_for('handle_file_upload') }}" method="post" enctype="multipart/form-data">
+  <label for="uploaded_file">Upload File:</label>
+  <input type="file" name="file" id="uploaded_file">
+  <input type="submit" value="Upload">
 </form>
