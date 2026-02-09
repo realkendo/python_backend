@@ -1,6 +1,6 @@
 from app import app 
 from flask import render_template
-from flask import request, redirect, url_for
+from flask import request, redirect, url_for, allowed_file
 # file import
 import os
 from werkzeug.utils import secure_filename
@@ -31,3 +31,6 @@ def handle_file_upload():
     filename = secure_filename(file.filename)
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
   return "File upload successful"
+
+
+
